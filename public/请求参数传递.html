@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        <input type="text" name='name' id="name">
+    </p>
+    <p>
+        <input type="text" name="age" id="age">
+    </p>
+    <p>
+        <button id="btn">提交</button>
+    </p>
+    <script>
+        var btn = document.querySelector('#btn')
+
+        btn.onclick = function () {
+            var name = document.querySelector('#name').value
+            var age = document.querySelector('#age').value
+            var params = 'name=' + name + '&age=' + age
+            //创建ajax对象
+            var xhr = new XMLHttpRequest()
+            //发送请求的方式 地址
+            xhr.open('get', 'http://localhost/transform?'+params)
+            //发送请求
+            xhr.send()
+            //获取服务器端响应的数据
+            xhr.onload = function () {
+                // 获取响应文本
+                var data = JSON.parse(xhr.responseText)
+                console.log(data);
+                
+            }
+        }
+
+    </script>
+</body>
+
+</html>

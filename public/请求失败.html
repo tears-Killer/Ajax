@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var xhr = new XMLHttpRequest()
+
+        xhr.open('get','http://localhost/error')
+        xhr.send()
+        xhr.onload = function(){
+            if(xhr.status == 400){
+                console.log('请求错误');
+            }
+        }
+    </script>
+</body>
+</html>
